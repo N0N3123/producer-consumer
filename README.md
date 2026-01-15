@@ -15,6 +15,7 @@ Zaawansowany system producent-konsument implementujący programowanie równoleg�
 ## Architektura
 
 📁 Producent-konsument/
+
 ├── config.py           # Konfiguracja centralna
 ├── logger.py           # Zaawansowany system loggowania
 ├── producer.py         # Klasa Producenta
@@ -22,17 +23,6 @@ Zaawansowany system producent-konsument implementujący programowanie równoleg�
 ├── monitor.py          # Monitor wydajności
 ├── main.py             # Orkestracja systemu
 └── README.md           # Dokumentacja
-
-
-## Mechanizmy programowania równoległego
-
-| Mechanizm                 | Zastosowanie                                 |
-| ------------------------- | -------------------------------------------- |
-| `Process`                 | Każdy producent/konsument w osobnym procesie |
-| `Queue` / `PriorityQueue` | Bezpieczna komunikacja między procesami      |
-| `Value`                   | Liczniki współdzielone między procesami      |
-| `Lock`                    | Synchronizacja dostępu do liczników          |
-| `Manager`                 | Współdzielone słowniki i listy               |
 
 ### Uruchomienie
 
@@ -49,6 +39,3 @@ Edytuj `config.py`, aby zmienić:
 
 ### Statystyki
 stats.json - Eksportowane statystyki w formacie JSON
-**Autor:** [Twoje imię]  
-**Data:** 2026-01-15  
-**Język:** Python 3.7+
