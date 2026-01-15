@@ -14,8 +14,6 @@ Zaawansowany system producent-konsument implementujący programowanie równoleg�
 6. **Logger** - Loguje każde zdarzenie z czasem do konsoli i pliku
 ## Architektura
 
-📁 Producent-konsument/
-
 ```
 📁 Producent-konsument/
 ├── config.py           # Konfiguracja centralna
