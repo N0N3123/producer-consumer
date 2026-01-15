@@ -16,13 +16,17 @@ Zaawansowany system producent-konsument implementujący programowanie równoleg�
 
 📁 Producent-konsument/
 
+```
+📁 Producent-konsument/
 ├── config.py           # Konfiguracja centralna
 ├── logger.py           # Zaawansowany system loggowania
 ├── producer.py         # Klasa Producenta
 ├── consumer.py         # Klasa Konsumenta
 ├── monitor.py          # Monitor wydajności
 ├── main.py             # Orkestracja systemu
+├── system.log          # Pełne logi
 └── README.md           # Dokumentacja
+```
 
 ### Uruchomienie
 
