@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "total_time_seconds": 7.59,
+    "start_time": "2026-01-15T17:49:47.072008",
+    "end_time": "2026-01-15T17:49:54.663689"
+  },
+  "statistics": {
+    "total_produced": 18,
+    "total_consumed": 18,
+    "items_in_queue": 0,
+    "average_throughput_per_sec": 2.37,
+    "efficiency_percent": 100.0
+  },
+  "producers": [
+    {"id": 1, "count": 6, "items": [18, 10, 22, 85, 20, 50]},
+    {"id": 2, "count": 6, "items": [56, 8, 94, 44, 29, 1]},
+    {"id": 3, "count": 6, "items": [49, 62, 87, 45, 63, 83]}
+  ],
+  "consumers": [
+    {"id": 1, "count": 9, "items": [18, 49, 8, 22, 87, 45, 63, 29, 50]},
+    {"id": 2, "count": 9, "items": [56, 10, 62, 94, 85, 44, 20, 83, 1]}
+  ]
+}
