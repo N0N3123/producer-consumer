@@ -1,64 +1,64 @@
-[19:32:17.803] [[INFO] SYSTEM       ] Użyta Queue z priorytetami
-[19:32:17.926] [[INFO] SYSTEM       ] ============================================================
-[19:32:17.926] [[INFO] SYSTEM       ] Uruchamianie systemu producent-konsument
-[19:32:17.926] [[INFO] SYSTEM       ] Producenci: 3, Konsumenci: 2
-[19:32:17.927] [[INFO] SYSTEM       ] Elementy per producent: 6
-[19:32:17.927] [[INFO] SYSTEM       ] Rozmiar kolejki: 5
-[19:32:17.927] [[INFO] SYSTEM       ] ============================================================
-[19:32:17.927] [[INFO] SYSTEM       ] Monitor uruchomiony
-[19:32:17.932] [[INFO] SYSTEM       ] Uruchomiono PRODUCENTA 1
-[19:32:17.937] [[INFO] SYSTEM       ] Uruchomiono PRODUCENTA 2
-[19:32:17.942] [[INFO] SYSTEM       ] Uruchomiono PRODUCENTA 3
-[19:32:17.948] [[INFO] SYSTEM       ] Uruchomiono KONSUMENTA 1
-[19:32:17.953] [[INFO] SYSTEM       ] Uruchomiono KONSUMENTA 2
-[19:32:18.056] [[INFO] PRODUCENT 1  ] Rozpoczęto produkcję
-[19:32:18.059] [[INFO] PRODUCENT 1  ] Wyprodukowano: 87 (priorytet: 1, postęp: 1/6)
-[19:32:18.059] [[INFO] PRODUCENT 2  ] Rozpoczęto produkcję
-[19:32:18.062] [[INFO] PRODUCENT 2  ] Wyprodukowano: 38 (priorytet: 0, postęp: 1/6)
-[19:32:18.066] [[INFO] PRODUCENT 3  ] Rozpoczęto produkcję
-[19:32:18.069] [[INFO] PRODUCENT 3  ] Wyprodukowano: 75 (priorytet: 0, postęp: 1/6)
-[19:32:18.070] [[INFO] KONSUMENT 1  ] Rozpoczęto konsumpcję
-[19:32:18.073] [[INFO] KONSUMENT 1  ] Przetwarzam: 87 (priorytet: 1, przetworzonych: 1)
-[19:32:18.073] [[INFO] KONSUMENT 2  ] Rozpoczęto konsumpcję
-[19:32:18.075] [[INFO] KONSUMENT 2  ] Przetwarzam: 38 (priorytet: 0, przetworzonych: 1)
-[19:32:18.290] [[INFO] PRODUCENT 3  ] Wyprodukowano: 95 (priorytet: 1, postęp: 2/6)
-[19:32:18.476] [[INFO] PRODUCENT 2  ] Wyprodukowano: 74 (priorytet: 0, postęp: 2/6)
-[19:32:18.500] [[INFO] PRODUCENT 3  ] Wyprodukowano: 1 (priorytet: 0, postęp: 3/6)
-[19:32:18.502] [[INFO] PRODUCENT 1  ] Wyprodukowano: 35 (priorytet: 0, postęp: 2/6)
-[19:32:18.777] [[INFO] KONSUMENT 2  ] Przetwarzam: 75 (priorytet: 0, przetworzonych: 2)
-[19:32:18.904] [[INFO] PRODUCENT 2  ] Wyprodukowano: 8 (priorytet: 0, postęp: 3/6)
-[19:32:19.024] [[INFO] KONSUMENT 1  ] Przetwarzam: 95 (priorytet: 1, przetworzonych: 2)
-[19:32:19.026] [[INFO] PRODUCENT 3  ] Wyprodukowano: 29 (priorytet: 0, postęp: 4/6)
-[19:32:19.480] [[INFO] KONSUMENT 2  ] Przetwarzam: 74 (priorytet: 0, przetworzonych: 3)
-[19:32:19.482] [[INFO] PRODUCENT 1  ] Wyprodukowano: 18 (priorytet: 0, postęp: 3/6)
-[19:32:19.977] [[INFO] KONSUMENT 1  ] Przetwarzam: 1 (priorytet: 0, przetworzonych: 3)
-[19:32:19.979] [[INFO] PRODUCENT 2  ] Wyprodukowano: 67 (priorytet: 0, postęp: 4/6)
-[19:32:20.182] [[INFO] KONSUMENT 2  ] Przetwarzam: 35 (priorytet: 0, przetworzonych: 4)
-[19:32:20.184] [[INFO] PRODUCENT 3  ] Wyprodukowano: 94 (priorytet: 1, postęp: 5/6)
-[19:32:20.680] [[INFO] KONSUMENT 1  ] Przetwarzam: 8 (priorytet: 0, przetworzonych: 4)
-[19:32:20.682] [[INFO] PRODUCENT 1  ] Wyprodukowano: 11 (priorytet: 0, postęp: 4/6)
-[19:32:20.884] [[INFO] KONSUMENT 2  ] Przetwarzam: 29 (priorytet: 0, przetworzonych: 5)
-[19:32:20.886] [[INFO] PRODUCENT 2  ] Wyprodukowano: 83 (priorytet: 1, postęp: 5/6)
-[19:32:21.383] [[INFO] KONSUMENT 1  ] Przetwarzam: 18 (priorytet: 0, przetworzonych: 5)
-[19:32:21.384] [[INFO] PRODUCENT 3  ] Wyprodukowano: 40 (priorytet: 0, postęp: 6/6)
-[19:32:21.587] [[INFO] KONSUMENT 2  ] Przetwarzam: 67 (priorytet: 0, przetworzonych: 6)
-[19:32:21.589] [[INFO] PRODUCENT 1  ] Wyprodukowano: 29 (priorytet: 0, postęp: 5/6)
-[19:32:21.847] [[INFO] PRODUCENT 3  ] Zakończył pracę
-[19:32:22.085] [[INFO] KONSUMENT 1  ] Przetwarzam: 94 (priorytet: 1, przetworzonych: 6)
-[19:32:22.087] [[INFO] PRODUCENT 2  ] Wyprodukowano: 58 (priorytet: 0, postęp: 6/6)
-[19:32:22.290] [[INFO] KONSUMENT 2  ] Przetwarzam: 11 (priorytet: 0, przetworzonych: 7)
-[19:32:22.292] [[INFO] PRODUCENT 1  ] Wyprodukowano: 46 (priorytet: 0, postęp: 6/6)
-[19:32:22.337] [[INFO] PRODUCENT 2  ] Zakończył pracę
-[19:32:22.819] [[INFO] PRODUCENT 1  ] Zakończył pracę
-[19:32:22.827] [[INFO] SYSTEM       ] Wszyscy producenci zakończyli pracę
-[19:32:22.993] [[INFO] KONSUMENT 2  ] Przetwarzam: 83 (priorytet: 1, przetworzonych: 8)
-[19:32:23.038] [[INFO] KONSUMENT 1  ] Przetwarzam: 40 (priorytet: 0, przetworzonych: 7)
-[19:32:23.741] [[INFO] KONSUMENT 1  ] Przetwarzam: 29 (priorytet: 0, przetworzonych: 8)
-[19:32:23.946] [[INFO] KONSUMENT 2  ] Przetwarzam: 58 (priorytet: 0, przetworzonych: 9)
-[19:32:24.443] [[INFO] KONSUMENT 1  ] Przetwarzam: 46 (priorytet: 0, przetworzonych: 9)
-[19:32:25.445] [[INFO] KONSUMENT 2  ] Otrzymano sygnał STOP
-[19:32:25.445] [[INFO] KONSUMENT 1  ] Otrzymano sygnał STOP
-[19:32:25.445] [[INFO] KONSUMENT 2  ] Zakończył pracę (przetworzył: 9)
-[19:32:25.445] [[INFO] KONSUMENT 1  ] Zakończył pracę (przetworzył: 9)
-[19:32:25.458] [[INFO] SYSTEM       ] Wszyscy konsumenci zakończyli pracę
-[19:32:25.472] [[INFO] SYSTEM       ] Program zakończył działanie
+[16:45:27.663] [[INFO] SYSTEM       ] Użyta Queue z priorytetami
+[16:45:27.730] [[INFO] SYSTEM       ] ============================================================
+[16:45:27.732] [[INFO] SYSTEM       ] Uruchamianie systemu producent-konsument
+[16:45:27.733] [[INFO] SYSTEM       ] Producenci: 3, Konsumenci: 2
+[16:45:27.735] [[INFO] SYSTEM       ] Elementy per producent: 6
+[16:45:27.736] [[INFO] SYSTEM       ] Rozmiar kolejki: 5
+[16:45:27.737] [[INFO] SYSTEM       ] ============================================================
+[16:45:27.739] [[INFO] SYSTEM       ] Monitor uruchomiony
+[16:45:27.741] [[INFO] SYSTEM       ] Uruchomiono PRODUCENTA 1
+[16:45:27.744] [[INFO] PRODUCENT 1  ] Rozpoczęto produkcję
+[16:45:27.743] [[INFO] SYSTEM       ] Uruchomiono PRODUCENTA 2
+[16:45:27.746] [[INFO] SYSTEM       ] Uruchomiono PRODUCENTA 3
+[16:45:27.749] [[INFO] SYSTEM       ] Uruchomiono KONSUMENTA 1
+[16:45:27.749] [[INFO] PRODUCENT 2  ] Rozpoczęto produkcję
+[16:45:27.750] [[INFO] PRODUCENT 3  ] Rozpoczęto produkcję
+[16:45:27.751] [[INFO] PRODUCENT 1  ] Wyprodukowano: 51 (priorytet: 0, postęp: 1/6)
+[16:45:27.752] [[INFO] SYSTEM       ] Uruchomiono KONSUMENTA 2
+[16:45:27.753] [[INFO] KONSUMENT 1  ] Rozpoczęto konsumpcję
+[16:45:27.756] [[INFO] PRODUCENT 2  ] Wyprodukowano: 59 (priorytet: 0, postęp: 1/6)
+[16:45:27.756] [[INFO] KONSUMENT 2  ] Rozpoczęto konsumpcję
+[16:45:27.759] [[INFO] PRODUCENT 3  ] Wyprodukowano: 38 (priorytet: 0, postęp: 1/6)
+[16:45:27.763] [[INFO] KONSUMENT 1  ] Przetwarzam: 51 (priorytet: 0, przetworzonych: 1)
+[16:45:27.766] [[INFO] KONSUMENT 2  ] Przetwarzam: 59 (priorytet: 0, przetworzonych: 1)
+[16:45:27.992] [[INFO] PRODUCENT 1  ] Wyprodukowano: 61 (priorytet: 0, postęp: 2/6)
+[16:45:28.214] [[INFO] PRODUCENT 1  ] Wyprodukowano: 22 (priorytet: 0, postęp: 3/6)
+[16:45:28.334] [[INFO] PRODUCENT 2  ] Wyprodukowano: 21 (priorytet: 0, postęp: 2/6)
+[16:45:28.355] [[INFO] PRODUCENT 3  ] Wyprodukowano: 90 (priorytet: 1, postęp: 2/6)
+[16:45:28.467] [[INFO] KONSUMENT 1  ] Przetwarzam: 38 (priorytet: 0, przetworzonych: 2)
+[16:45:28.469] [[INFO] KONSUMENT 2  ] Przetwarzam: 61 (priorytet: 0, przetworzonych: 2)
+[16:45:28.779] [[INFO] PRODUCENT 1  ] Wyprodukowano: 14 (priorytet: 0, postęp: 4/6)
+[16:45:28.794] [[INFO] PRODUCENT 2  ] Wyprodukowano: 32 (priorytet: 0, postęp: 3/6)
+[16:45:29.171] [[INFO] KONSUMENT 1  ] Przetwarzam: 22 (priorytet: 0, przetworzonych: 3)
+[16:45:29.172] [[INFO] PRODUCENT 3  ] Wyprodukowano: 34 (priorytet: 0, postęp: 3/6)
+[16:45:29.174] [[INFO] KONSUMENT 2  ] Przetwarzam: 21 (priorytet: 0, przetworzonych: 3)
+[16:45:29.317] [[INFO] PRODUCENT 2  ] Wyprodukowano: 76 (priorytet: 0, postęp: 4/6)
+[16:45:29.874] [[INFO] KONSUMENT 1  ] Przetwarzam: 90 (priorytet: 1, przetworzonych: 4)
+[16:45:29.876] [[INFO] PRODUCENT 1  ] Wyprodukowano: 17 (priorytet: 0, postęp: 5/6)
+[16:45:29.878] [[INFO] KONSUMENT 2  ] Przetwarzam: 14 (priorytet: 0, przetworzonych: 4)
+[16:45:29.880] [[INFO] PRODUCENT 3  ] Wyprodukowano: 86 (priorytet: 1, postęp: 4/6)
+[16:45:30.582] [[INFO] KONSUMENT 2  ] Przetwarzam: 32 (priorytet: 0, przetworzonych: 5)
+[16:45:30.584] [[INFO] PRODUCENT 2  ] Wyprodukowano: 51 (priorytet: 0, postęp: 5/6)
+[16:45:30.828] [[INFO] KONSUMENT 1  ] Przetwarzam: 34 (priorytet: 0, przetworzonych: 5)
+[16:45:30.830] [[INFO] PRODUCENT 3  ] Wyprodukowano: 82 (priorytet: 1, postęp: 5/6)
+[16:45:31.286] [[INFO] KONSUMENT 2  ] Przetwarzam: 76 (priorytet: 0, przetworzonych: 6)
+[16:45:31.288] [[INFO] PRODUCENT 1  ] Wyprodukowano: 77 (priorytet: 0, postęp: 6/6)
+[16:45:31.532] [[INFO] KONSUMENT 1  ] Przetwarzam: 17 (priorytet: 0, przetworzonych: 6)
+[16:45:31.534] [[INFO] PRODUCENT 2  ] Wyprodukowano: 85 (priorytet: 1, postęp: 6/6)
+[16:45:31.822] [[INFO] PRODUCENT 1  ] Zakończył pracę
+[16:45:31.919] [[INFO] PRODUCENT 2  ] Zakończył pracę
+[16:45:31.991] [[INFO] KONSUMENT 2  ] Przetwarzam: 86 (priorytet: 1, przetworzonych: 7)
+[16:45:31.994] [[INFO] PRODUCENT 3  ] Wyprodukowano: 7 (priorytet: 0, postęp: 6/6)
+[16:45:32.236] [[INFO] KONSUMENT 1  ] Przetwarzam: 51 (priorytet: 0, przetworzonych: 7)
+[16:45:32.302] [[INFO] PRODUCENT 3  ] Zakończył pracę
+[16:45:32.307] [[INFO] SYSTEM       ] Wszyscy producenci zakończyli pracę
+[16:45:32.940] [[INFO] KONSUMENT 1  ] Przetwarzam: 82 (priorytet: 1, przetworzonych: 8)
+[16:45:32.946] [[INFO] KONSUMENT 2  ] Przetwarzam: 77 (priorytet: 0, przetworzonych: 8)
+[16:45:33.650] [[INFO] KONSUMENT 2  ] Przetwarzam: 85 (priorytet: 1, przetworzonych: 9)
+[16:45:33.894] [[INFO] KONSUMENT 1  ] Przetwarzam: 7 (priorytet: 0, przetworzonych: 9)
+[16:45:34.912] [[INFO] KONSUMENT 2  ] Otrzymano sygnał STOP
+[16:45:34.912] [[INFO] KONSUMENT 1  ] Otrzymano sygnał STOP
+[16:45:34.913] [[INFO] KONSUMENT 1  ] Zakończył pracę (przetworzył: 9)
+[16:45:34.913] [[INFO] KONSUMENT 2  ] Zakończył pracę (przetworzył: 9)
+[16:45:34.917] [[INFO] SYSTEM       ] Wszyscy konsumenci zakończyli pracę
+[16:45:34.949] [[INFO] SYSTEM       ] Program zakończył działanie

@@ -1,43 +1,163 @@
-# producent-consumer
-# Projekt: System Producent-Konsument z Programowaniem Równoległym
+# System Producent-Konsument z Programowaniem Równoległym
 
-## Opis
+Zaawansowany projekt uniwersytecki implementujący wzorzec producent-konsument z wykorzystaniem programowania równoległego w Pythonie oraz web dashboard do monitorowania w czasie rzeczywistym.
 
-Zaawansowany system producent-konsument implementujący programowanie równoległe w Pythonie z wykorzystaniem `multiprocessing`.
+- **Python 3.12+** - (https://www.python.org/downloads/)
 
-### Działanie programu
-1. **Producenci** (3 procesy) - Generują losowe liczby (1-100) i wstawiają je do wspólnej kolejki
-2. **Kolejka** - Bezpiecznie przechowuje elementy między procesami (max 5 elementów)
-3. **Konsumenci** (2 procesy) - Pobierają elementy z kolejki i je przetwarzają
-4. **Lock** - Chroni liczniki aby tylko jeden proces na raz je aktualizował
-5. **Monitor** - Co sekundę zbiera statystyki (ile wyprodukowano, ile skonsumowano, lag)
-6. **Logger** - Loguje każde zdarzenie z czasem do konsoli i pliku
-## Architektura
+## 📦 Instalacja
 
-```
-📁 Producent-konsument/
-├── config.py           # Konfiguracja centralna
-├── logger.py           # System loggowania
-├── producer.py         # Klasa Producenta
-├── consumer.py         # Klasa Konsumenta
-├── monitor.py          # Monitor wydajności
-├── main.py             # Główny Program
-├── system.log          # Pełne logi
-└── README.md           # Dokumentacja
-```
+### Metoda 1: Automatyczna
 
-### Uruchomienie
 
+## 🚀 Uruchomienie
+
+### Sposób 1: Lokalnie (Windows)
+
+
+
+To otworzy 2 terminale:
+
+1. **Terminal 1** - System producent-konsument (`main.py`)
+2. **Terminal 2** - Web dashboard API (`api.py`)
+
+Następnie otwórz w przeglądarce: **http://localhost:5000**
+
+### Sposób 2: Ręcznie (2 terminale)
+
+**Terminal 1:**
+
+```bash
 python main.py
+```
 
-### Konfiguracja
+**Terminal 2:**
 
-Edytuj `config.py`, aby zmienić:
+```bash
+python api.py
+```
 
-- Liczbę producentów/konsumentów
-- Wielkość kolejki
-- Timeouty i interwały
-- Prioritety
+Otwórz przeglądarkę: **http://localhost:5000**
 
-### Statystyki
-stats.json - Eksportowane statystyki w formacie JSON
+### Sposób 3: Docker (NAJŁATWIEJSZY)
+
+```bash
+# Upewnij się że Docker Desktop jest uruchomiony!
+
+# Kliknij dwukrotnie:
+run_docker.bat
+
+# Lub ręcznie:
+docker-compose up --build
+```
+
+Otwórz przeglądarkę: **http://localhost:5000**
+
+**Zatrzymanie Docker:**
+
+```bash
+Ctrl+C
+# Lub
+docker-compose down
+```
+
+---
+
+## 🏗️ Architektura
+
+```
+Producent-konsument/
+├── main.py              # Główna orkestracja systemu
+├── config.py            # Konfiguracja centralna
+├── producer.py          # Klasa Producenta
+├── consumer.py          # Klasa Konsumenta
+├── monitor.py           # Monitoring i statystyki
+├── logger.py            # System logowania
+├── api.py               # Flask API dla dashboardu
+├── templates/
+│   └── dashboard.html   # Strona dashboardu
+├── static/
+│   ├── style.css        # Style dashboardu
+│   └── script.js        # Logika dashboardu
+├── requirements.txt     # Zależności Python
+├── Dockerfile           # Konfiguracja Docker
+├── docker-compose.yml   # Docker Compose config
+├── setup.bat            # Skrypt instalacyjny (Windows)
+├── run_local.bat        # Uruchomienie lokalne (Windows)
+├── run_docker.bat       # Uruchomienie Docker (Windows)
+└── README.md            # Ta dokumentacja
+```
+
+---
+
+## 🎯 Jak Działa Program
+
+### 1. **Producenci** (3 procesy równoległe)
+
+- Generują losowe liczby od 1 do 100
+- Przypisują priorytet: wartość > 80 = priorytet 1 (wysoki), reszta = priorytet 0
+- Wstawiają do kolejki jako tuple: `(priorytet, wartość)`
+- Każdy producent generuje 6 elementów
+
+### 2. **Kolejka** (wspólny bufor)
+
+- Maksymalny rozmiar: 5 elementów
+- Jeśli pełna, producent czeka (blokuje się)
+- Bezpieczna komunikacja między procesami (IPC)
+
+### 3. **Konsumenci** (2 procesy równoległe)
+
+- Pobierają elementy z kolejki (FIFO)
+- Elementy o wyższym priorytecie są przetwarzane szybciej
+- Każdy konsument przetwarza ~9 elementów
+
+### 4. **Synchronizacja**
+
+- **Lock** - Chroni liczniki przed race condition
+- **Value** - Współdzielone liczniki (wyprodukowane/skonsumowane)
+- **Manager** - Zarządza współdzielonymi listami elementów
+
+### 5. **Monitoring**
+
+- Co 1 sekundę zbiera statystyki
+- Eksportuje wyniki do `stats.json`
+- Loguje wszystkie zdarzenia do `system.log`
+
+### 6. **Web Dashboard**
+
+- Flask API udostępnia endpoint `/api/stats`
+- JavaScript odświeża dane co 1 sekundę
+- Pokazuje live: wyprodukowane, skonsumowane, efektywność, logi
+
+---
+
+## ⚙️ Konfiguracja
+
+Edytuj plik **`config.py`**:
+
+```python
+# Liczba procesów
+PRODUCERS_COUNT = 3          # Ile producentów
+CONSUMERS_COUNT = 2          # Ile konsumentów
+ITEMS_PER_PRODUCER = 6       # Ile każdy producent wyprodukuje
+
+# Kolejka
+QUEUE_SIZE = 5               # Max rozmiar kolejki
+
+# Timeouty (sekundy)
+PRODUCER_SLEEP_MIN = 0.2     # Min czas między produkcją
+PRODUCER_SLEEP_MAX = 0.6     # Max czas między produkcją
+CONSUMER_SLEEP_MIN = 0.7     # Min czas przetwarzania
+CONSUMER_SLEEP_MAX = 1.2     # Max czas przetwarzania
+
+# Monitoring
+MONITOR_INTERVAL = 1.0       # Co ile sekund zbierać statystyki
+
+# Priorytety
+PRIORITY_ENABLED = True      # Czy używać priorytetów
+```
+
+---
+
+## 🖥️ Web Dashboard
+
+Dashboard dostępny pod adresem **http://localhost:5000** 

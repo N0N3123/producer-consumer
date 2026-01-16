@@ -1,22 +1,22 @@
 {
   "metadata": {
-    "total_time_seconds": 7.54,
-    "start_time": "2026-01-15T19:32:17.927117",
-    "end_time": "2026-01-15T19:32:25.466401"
+    "total_time_seconds": 7.19,
+    "start_time": "2026-01-16T16:45:27.739120",
+    "end_time": "2026-01-16T16:45:34.931329"
   },
   "statistics": {
     "total_produced": 18,
     "total_consumed": 18,
-    "average_throughput_per_sec": 2.39,
+    "average_throughput_per_sec": 2.5,
     "efficiency_percent": 100.0
   },
   "producers": [
-    {"id": 1, "count": 6, "items": [87, 35, 18, 11, 29, 46]},
-    {"id": 2, "count": 6, "items": [38, 74, 8, 67, 83, 58]},
-    {"id": 3, "count": 6, "items": [75, 95, 1, 29, 94, 40]}
+    {"id": 1, "count": 6, "items": [51, 61, 22, 14, 17, 77]},
+    {"id": 2, "count": 6, "items": [59, 21, 32, 76, 51, 85]},
+    {"id": 3, "count": 6, "items": [38, 90, 34, 86, 82, 7]}
   ],
   "consumers": [
-    {"id": 1, "count": 9, "items": [87, 95, 1, 8, 18, 94, 40, 29, 46]},
-    {"id": 2, "count": 9, "items": [38, 75, 74, 35, 29, 67, 11, 83, 58]}
+    {"id": 1, "count": 9, "items": [51, 38, 22, 90, 34, 17, 51, 82, 7]},
+    {"id": 2, "count": 9, "items": [59, 61, 21, 14, 32, 76, 86, 77, 85]}
   ]
 }
