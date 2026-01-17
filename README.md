@@ -1,6 +1,6 @@
 # System Producent-Konsument z Dockerem
 
-Symulacja systemu produkcji z monitoringiem. Producenci generują przedmioty (część wadliwe), konsumenci je przetwarzają, a dashboard pokazuje statystyki na żywo. Całość działa w kontenerze Dockera.
+Prosta symulacja systemu produkcji z monitoringiem. Producenci generują przedmioty, konsumenci je przetwarzają, unikając przy tym przedmioty wadliwe, a dashboard pokazuje statystyki na żywo. Całość działa w kontenerze Dockera.
 
 - **Python 3.12+** - (https://www.python.org/downloads/)
 
