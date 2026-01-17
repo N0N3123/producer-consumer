@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard - Producent/Konsument</title>
     <link rel="stylesheet" href="/static/style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <body>
     <div class="container">
@@ -24,8 +25,8 @@
             <div class="status-value" id="efficiency">0%</div>
           </div>
           <div class="status-item">
-            <div class="status-label">Przepustowość</div>
-            <div class="status-value" id="throughput">0</div>
+            <div class="status-label">Wadliwe</div>
+            <div class="status-value" id="defective">0</div>
           </div>
         </div>
         <div class="timestamp">
@@ -45,8 +46,16 @@
         </div>
       </div>
 
+      <div class="chart-container">
+        <div class="card">
+          <h2>📈 Trend Konsumpcji Konsumenta</h2>
+          <div class="consumer-buttons" id="consumer-buttons"></div>
+          <canvas id="trendChart"></canvas>
+        </div>
+      </div>
+
       <div class="logs-container">
-        <h2>📋 Ostatnie Logi</h2>
+        <h2>📋Logi</h2>
         <div class="logs-content" id="logs-content"></div>
       </div>
     </div>

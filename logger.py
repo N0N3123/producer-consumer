@@ -1,7 +1,3 @@
-"""
-System zaawansowanego loggowania do konsoli i pliku.
-"""
-
 from datetime import datetime
 from typing import Optional
 from pathlib import Path

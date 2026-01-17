@@ -1,8 +1,3 @@
-"""
-Monitoring wydajności systemu producent-konsument.
-Bieżące statystyki i zapis do JSON.
-"""
-
 import json
 import time
 from multiprocessing import Value, Queue
@@ -59,12 +54,37 @@ class SystemMonitor:
             "lag": produced - consumed
         }
 
+    def _update_stats_file(self) -> None:
+        try:
+            elapsed = time.time() - self.start_time
+            produced = self.produced_counter.value
+            consumed = self.consumed_counter.value
+            
+            stats_data = {
+                "metadata": {
+                    "total_time_seconds": round(elapsed, 2),
+                    "start_time": datetime.fromtimestamp(self.start_time).isoformat(),
+                    "end_time": datetime.now().isoformat()
+                },
+                "statistics": {
+                    "total_produced": produced,
+                    "total_consumed": consumed,
+                    "average_throughput_per_sec": round(produced / elapsed if elapsed > 0 else 0, 2),
+                    "efficiency_percent": round((consumed / produced * 100) if produced > 0 else 0, 2)
+                },
+                "producers": [],
+                "consumers": []
+            }
+            
+            with open(self.stats_file, 'w', encoding='utf-8') as f:
+                json.dump(stats_data, f, indent=2, ensure_ascii=False)
+        except Exception:
+            pass
+
     def collect_stats(self) -> None:
         stats = self.get_stats()
         self.history.append(stats)
-        
-        print(f"[MONITOR] Prod: {stats['produced']}, Konsumowano: {stats['consumed']}, "
-              f"Queue: {stats['queue_size']}, Opóźnienie: {stats['lag']}")
+        self._update_stats_file()
 
     def export_stats(self, produced_items: dict = None, consumed_items: dict = None) -> None:
         try:

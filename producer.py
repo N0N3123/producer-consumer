@@ -1,7 +1,3 @@
-"""
-Klasa Producenta w systemie producent-konsument.
-"""
-
 import time
 import random
 from multiprocessing import Queue, Value, Lock
@@ -18,7 +14,8 @@ class Producer:
                  produced_items: dict,
                  sleep_min: float = 0.2,
                  sleep_max: float = 0.6,
-                 lock: Lock = None):
+                 lock: Lock = None,
+                 defect_rate: float = 0.0):
         self.producer_id = producer_id
         self.queue = queue
         self.items_count = items_count
@@ -27,6 +24,7 @@ class Producer:
         self.sleep_min = sleep_min
         self.sleep_max = sleep_max
         self.lock = lock
+        self.defect_rate = defect_rate
         self.logger = get_logger()
 
     def produce(self) -> None:
@@ -39,15 +37,18 @@ class Producer:
                 if item > 80:
                     priority = 1
                 
-                self.queue.put((priority, item))
+                is_defective = random.random() < self.defect_rate
+                
+                self.queue.put((priority, item, is_defective))
                 
                 with self.lock:
                     self.produced_counter.value += 1
                     self.produced_items[self.producer_id].append(item)
                 
+                defect_status = " [WADLIWY]" if is_defective else ""
                 self.logger.info(
                     f"PRODUCENT {self.producer_id}",
-                    f"Wyprodukowano: {item} (priorytet: {priority}, postęp: {i + 1}/{self.items_count})"
+                    f"Wyprodukowano: {item}{defect_status} (priorytet: {priority}, postęp: {i + 1}/{self.items_count})"
                 )
                 
                 time.sleep(random.uniform(self.sleep_min, self.sleep_max))

@@ -1,8 +1,3 @@
-"""
-Główna orkestracja systemu producent-konsument.
-Zarządza procesami producentów, konsumentów i monitora.
-"""
-
 import signal
 import sys
 import time
@@ -72,29 +67,36 @@ class ProducerConsumerSystem:
         )
         self.logger.info("SYSTEM", "Monitor uruchomiony")
         for i in range(config.PRODUCERS_COUNT):
+            producer_id = i + 1
+            defect_rate = config.DEFECT_RATES.get(producer_id, 0.0)
+            
             producer = Producer(
-                producer_id=i + 1,
+                producer_id=producer_id,
                 queue=self.queue,
                 items_count=config.ITEMS_PER_PRODUCER,
                 produced_counter=self.produced_counter,
                 produced_items=self.produced_items,
                 sleep_min=config.PRODUCER_SLEEP_MIN,
                 sleep_max=config.PRODUCER_SLEEP_MAX,
-                lock=self.lock
+                lock=self.lock,
+                defect_rate=defect_rate
             )
             p = Process(target=producer.run)
             self.producers.append(p)
             p.start()
-            self.logger.info("SYSTEM", f"Uruchomiono PRODUCENTA {i + 1}")
+            self.logger.info("SYSTEM", f"Uruchomiono PRODUCENTA {i + 1} (szansa wady: {defect_rate*100:.0f}%)")
 
         for i in range(config.CONSUMERS_COUNT):
+            consumer_id = i + 1
+            sleep_min, sleep_max = config.CONSUMER_SPEEDS.get(consumer_id, (0.5, 1.0))
+            
             consumer = Consumer(
-                consumer_id=i + 1,
+                consumer_id=consumer_id,
                 queue=self.queue,
                 consumed_counter=self.consumed_counter,
                 consumed_items=self.consumed_items,
-                sleep_min=config.CONSUMER_SLEEP_MIN,
-                sleep_max=config.CONSUMER_SLEEP_MAX,
+                sleep_min=sleep_min,
+                sleep_max=sleep_max,
                 lock=self.lock
             )
             c = Process(target=consumer.run)
@@ -138,36 +140,6 @@ class ProducerConsumerSystem:
             if c.is_alive():
                 c.terminate()
 
-    def print_statistics(self) -> None:
-        print("\n" + "=" * 60)
-        print("FINALNE STATYSTYKI SYSTEMU")
-        print("=" * 60)
-        
-        stats = self.monitor.get_final_stats()
-        print(f"\n[OGOLNE]:")
-        print(f"  Czas wykonania: {stats['total_time_seconds']} s")
-        print(f"  Start: {stats['start_time']}")
-        print(f"  Koniec: {stats['end_time']}")
-        
-        print(f"\n[PRODUKCJA I KONSUMPCJA]:")
-        print(f"  Wyprodukowano: {stats['total_produced']} elementów")
-        print(f"  Skonsumowano: {stats['total_consumed']} elementów")
-        
-        print(f"\n[WYDAJNOSC]:")
-        print(f"  Średnia przepustowość: {stats['average_throughput']} elem/s")
-        print(f"  Efektywność: {stats['efficiency']}%")
-        
-        print(f"\n[PRODUKCJA PER PRODUCENT]:")
-        for pid, items in self.produced_items.items():
-            items_list = list(items)
-            print(f"  Producent {pid}: {len(items_list)} elementów: {items_list}")
-        
-        print(f"\n[KONSUMPCJA PER KONSUMENT]:")
-        for cid, items in self.consumed_items.items():
-            items_list = list(items)
-            print(f"  Konsument {cid}: {len(items_list)} elementów: {items_list}")
-        
-        print("\n" + "=" * 60)
         if config.EXPORT_STATS:
             self.monitor.export_stats(
                 produced_items=self.produced_items,
@@ -187,9 +159,6 @@ def main():
         system.logger.error("SYSTEM", f"Błąd krityczny: {e}")
         system.shutdown()
         raise
-    
-    system.print_statistics()
-    system.logger.info("SYSTEM", "Program zakończył działanie")
 
 
 if __name__ == "__main__":

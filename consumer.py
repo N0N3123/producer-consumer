@@ -1,7 +1,3 @@
-"""
-Klasa Konsumenta w systemie producent-konsument.
-"""
-
 import time
 from multiprocessing import Queue, Value, Lock
 from logger import get_logger
@@ -29,6 +25,7 @@ class Consumer:
         self.logger.info(f"KONSUMENT {self.consumer_id}", "Rozpoczęto konsumpcję")
         
         items_processed = 0
+        items_rejected = 0
         try:
             while True:
                 item_tuple = self.queue.get()
@@ -37,7 +34,15 @@ class Consumer:
                     self.logger.info(f"KONSUMENT {self.consumer_id}", "Otrzymano sygnał STOP")
                     break
                 
-                priority, item = item_tuple
+                priority, item, is_defective = item_tuple
+                
+                if is_defective:
+                    items_rejected += 1
+                    self.logger.info(
+                        f"KONSUMENT {self.consumer_id}",
+                        f"ODRZUCONO WADLIWY: {item} (odrzuconych: {items_rejected})"
+                    )
+                    continue
                 
                 with self.lock:
                     self.consumed_counter.value += 1

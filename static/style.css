@@ -76,6 +76,42 @@ h2 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
+.chart-container {
+  margin-bottom: 20px;
+}
+
+.chart-container canvas {
+  max-height: 300px;
+}
+
+.consumer-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.consumer-btn {
+  padding: 8px 12px;
+  border: 2px solid #667eea;
+  background: white;
+  color: #667eea;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.consumer-btn:hover {
+  background: #667eea;
+  color: white;
+}
+
+.consumer-btn.active {
+  background: #667eea;
+  color: white;
+}
+
 .producers,
 .consumers {
   display: flex;
