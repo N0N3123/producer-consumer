@@ -24,10 +24,7 @@ SHUTDOWN_TIMEOUT: int = 30
 LOG_FILE: str = "system.log"
 LOG_TO_FILE: bool = True
 LOG_TO_CONSOLE: bool = True
-LOG_LEVEL: str = "INFO"
 
 MONITOR_INTERVAL: float = 1.0
 STATS_FILE: str = "stats.json"
 EXPORT_STATS: bool = True
-
-PRIORITY_ENABLED: bool = True

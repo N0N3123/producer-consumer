@@ -33,11 +33,8 @@ class Producer:
         for i in range(self.items_count):
             try:
                 item = random.randint(1, 100)
-                priority = 0 
-                if item > 80:
-                    priority = 1
-                
                 is_defective = random.random() < self.defect_rate
+                priority = 0
                 
                 self.queue.put((priority, item, is_defective))
                 

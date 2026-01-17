@@ -5,23 +5,6 @@ from typing import Dict, Any
 from datetime import datetime
 
 
-class CompactJSONEncoder(json.JSONEncoder):
-    
-    def encode(self, o):
-        if isinstance(o, dict):
-            items = []
-            for k, v in o.items():
-                if isinstance(v, list) and k == "items":
-                    items.append(f'"{k}": [{", ".join(str(x) for x in v)}]')
-                else:
-                    items.append(f'"{k}": {self.encode(v)}')
-            return "{" + ", ".join(items) + "}"
-        elif isinstance(o, list):
-            return "[" + ", ".join(self.encode(item) for item in o) + "]"
-        else:
-            return super().encode(o)
-
-
 class SystemMonitor:
 
     def __init__(self, 

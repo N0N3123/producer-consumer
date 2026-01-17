@@ -19,13 +19,7 @@ class ProducerConsumerSystem:
             to_console=config.LOG_TO_CONSOLE
         )
         self.logger = get_logger()
-        
-        if config.PRIORITY_ENABLED:
-            self.queue = Queue(maxsize=config.QUEUE_SIZE) 
-            self.logger.info("SYSTEM", "Użyta Queue z priorytetami")
-        else:
-            self.queue = Queue(maxsize=config.QUEUE_SIZE)
-            self.logger.info("SYSTEM", "Użyta zwykła Queue")
+        self.queue = Queue(maxsize=config.QUEUE_SIZE)
         self.produced_counter = Value('i', 0)
         self.consumed_counter = Value('i', 0)
         self.lock = Lock()

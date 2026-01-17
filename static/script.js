@@ -2,7 +2,6 @@ const API_BASE = '/api';
 let trendChart = null;
 let selectedConsumer = 1;
 let consumerHistory = {};
-let startTime = null;
 let lastProduced = 0;
 let lastConsumed = 0;
 let noChangeCount = 0;
@@ -13,17 +12,7 @@ async function parseLogsForHistory() {
         const response = await fetch(`${API_BASE}/logs`);
         const data = await response.json();
 
-        if (!startTime && data.logs.length > 0) {
-            const timeMatch = data.logs[0].match(/\d{2}:\d{2}:\d{2}/);
-            if (timeMatch) {
-                startTime = new Date();
-                startTime.setHours(parseInt(timeMatch[0].split(':')[0]));
-                startTime.setMinutes(parseInt(timeMatch[0].split(':')[1]));
-                startTime.setSeconds(parseInt(timeMatch[0].split(':')[2]));
-            }
-        }
-        if (!startTime) startTime = new Date();
-
+        const startTime = new Date();
         const newConsumerHistory = {};
 
         data.logs.forEach((log) => {

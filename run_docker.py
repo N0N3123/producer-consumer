@@ -25,7 +25,7 @@ def main() -> None:
     cmd = compose_cmd + ["up", "--build"]
     dashboard_url = "http://localhost:5000"
     
-    open_browser_delayed(dashboard_url)
+    open_browser_delayed(dashboard_url, delay=4)
     subprocess.run(cmd)
 
 
